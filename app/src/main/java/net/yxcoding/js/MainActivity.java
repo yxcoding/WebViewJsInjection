@@ -22,16 +22,17 @@ public class MainActivity extends AppCompatActivity
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        webSettings.setDomStorageEnabled(true);
+        //webSettings.setDomStorageEnabled(true);
 
-        webView.setWebViewClient(new WebClient());
+        webView.setWebViewClient(new MyWebClient());
 
         webView.loadUrl("file:///android_asset/test.html");
 
         js = "javascript:function setValue(){x=document.getElementById(\"content\");  x.innerHTML=\"js 注入成功且方法调用成功\";}";
     }
 
-    class WebClient extends WebViewClient {
+    class MyWebClient extends WebViewClient
+    {
         @Override
         public void onPageFinished(WebView view, String url)
         {
